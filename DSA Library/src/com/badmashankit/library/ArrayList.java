@@ -18,91 +18,88 @@
 package com.badmashankit.library;
 
 public class ArrayList<E> {
-	
+
 	private Object[] elements;
-	
+
 	// Keeps track of the length of the internal array used
 	private int length;
-	
+
 	// Keeps track of no. of elements in the list
 	private int size;
-	
+
 	public ArrayList() {
 		this(10);
 	}
-	
+
 	public ArrayList(int length) {
 		this.length = length;
 		elements = new Object[length];
 		size = 0;
 	}
-	
+
 	public boolean isEmpty() {
 		return size == 0;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public E get(int index) throws IndexOutOfBoundsException {
 		checkRange(index);
 		return (E) elements[index];
 	}
-	
+
 	public int size() {
 		return size;
 	}
-	
+
 	public void add(E element) {
 		doubleArrayIfOverflow(size + 1);
 		elements[size++] = element;
 	}
-	
+
 	public void add(int index, E element) throws IndexOutOfBoundsException {
 		checkRange(index);
 		doubleArrayIfOverflow(size + 1);
-		for(int i = size; i > index; i--) {
+		for (int i = size; i > index; i--)
 			elements[i] = elements[i - 1];
-		}
 		elements[index] = element;
 		size++;
 	}
-	
+
 	public void remove(int index) throws IndexOutOfBoundsException {
 		checkRange(index);
-		if(index < size - 1) {
+		if (index < size - 1) {
 			// Shift elements to left by 1
-			for(int i = index; i < size - 1; i++) {
+			for (int i = index; i < size - 1; i++)
 				elements[i] = elements[i + 1];
-			}
 		}
 		elements[size--] = null; // Decrease size by 1
 	}
-	
+
 	@Override
 	public String toString() {
 		String str = "[";
-		for(int i = 0; i < size - 1; i++) {
+		for (int i = 0; i < size - 1; i++)
 			str += elements[i] + ", ";
-		}
 		str += elements[size - 1] + "]";
 		return str;
 	}
-	
-	// This method doubles the size of array everytime the required size is greater than the current size
+
+	// This method doubles the size of array everytime the required size is
+	// greater than the current size
 	private void doubleArrayIfOverflow(int required) {
-		if(required > length) {
+		if (required > length) {
 			length *= 2;
 			Object[] copy = new Object[length];
-			for(int i = 0; i < size; i++) {
+			for (int i = 0; i < size; i++)
 				copy[i] = elements[i];
-			}
 			elements = copy;
 		}
 	}
-	
-	// This method checks if the index is within the range of 0 to size - 1 (inclusive)
-	private void checkRange(int index) throws IndexOutOfBoundsException {
-		if(index >= size || index < 0) {
+
+	// This method checks if the index is within the range of 0 to size - 1
+	// (inclusive)
+	private void checkRange(int index) {
+		if (index >= size || index < 0)
 			throw new IndexOutOfBoundsException("Index: " + index + ", Size : " + size);
-		}
 	}
 }
