@@ -164,7 +164,7 @@ public class LinkedList<E> implements Iterable<E> {
 	}
 
 	public int indexOf(E element) {
-		if (!isEmpty())
+		if (isEmpty())
 			return -1;
 		int index = 0;
 		if (element == null) {
@@ -175,7 +175,7 @@ public class LinkedList<E> implements Iterable<E> {
 			}
 		} else {
 			for (Node ptr = head; ptr != null; ptr = ptr.getNext()) {
-				if (ptr.getData() == null)
+				if (ptr.getData().equals(element))
 					return index;
 				index++;
 			}
