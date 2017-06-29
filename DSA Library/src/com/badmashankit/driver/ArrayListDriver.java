@@ -23,23 +23,15 @@ public class ArrayListDriver {
 
 	public static void main(String[] args) {
 		ArrayList<Double> list = new ArrayList<>();
-
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 50; i++)
 			list.add(2.0 * i);
-		}
-
 		System.out.println("Initial List: " + list);
-
 		list.add(3, 25.0);
 		System.out.println("\nAfter adding 25 at index 3: " + list);
-
 		System.out.println("\nElement at index 5 : " + list.get(5));
-
 		list.remove(2);
 		System.out.println("\nAfter removing element at index 2: " + list);
-
 		System.out.println("\nisEmpty : " + list.isEmpty());
-
 		System.out.println("\nSize of the List : " + list.size());
 	}
 }

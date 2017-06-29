@@ -38,9 +38,9 @@ public class LinkedListDriver {
 		System.out.println("\nisEmpty : " + list.isEmpty());
 		System.out.println("\nSize of the List: " + list.size());
 		System.out.println("\nList contains 29.0: " + list.contains(29.0));
-        System.out.println("\nIndex of 96.0 in list: " + list.indexOf(96.0));
-        System.out.println("\nMid value for the list: " + list.findMid());
-        list.reverse();
-        System.out.println("\nAfter reversing the list: " + list);
+		System.out.println("\nIndex of 96.0 in list: " + list.indexOf(96.0));
+		System.out.println("\nMid value for the list: " + list.findMid());
+		list.reverse();
+		System.out.println("\nAfter reversing the list: " + list);
 	}
 }
