@@ -89,7 +89,7 @@ public class ArrayList<E> implements Iterable<E> {
 
 			@Override
 			public E next() {
-				return get(index);
+				return get(index++);
 			}
 		};
 	}
