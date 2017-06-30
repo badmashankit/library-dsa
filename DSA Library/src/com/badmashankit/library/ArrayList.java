@@ -17,7 +17,9 @@
 
 package com.badmashankit.library;
 
-public class ArrayList<E> {
+import java.util.Iterator;
+
+public class ArrayList<E> implements Iterable<E> {
 
 	private Object[] elements;
 
@@ -73,6 +75,23 @@ public class ArrayList<E> {
 				elements[i] = elements[i + 1];
 		}
 		elements[size--] = null; // Decrease size by 1
+	}
+	
+	@Override
+	public Iterator<E> iterator() {
+		return new Iterator<E>() {
+			private int index = 0;
+
+			@Override
+			public boolean hasNext() {
+				return index < size();
+			}
+
+			@Override
+			public E next() {
+				return get(index);
+			}
+		};
 	}
 
 	@Override
