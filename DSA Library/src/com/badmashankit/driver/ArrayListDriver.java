@@ -33,5 +33,8 @@ public class ArrayListDriver {
 		System.out.println("\nAfter removing element at index 2: " + list);
 		System.out.println("\nisEmpty : " + list.isEmpty());
 		System.out.println("\nSize of the List : " + list.size());
+		System.out.print("\nTesting iterator: ");
+		for(double d : list)
+			System.out.print(d + "\t");
 	}
 }

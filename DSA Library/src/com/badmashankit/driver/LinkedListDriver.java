@@ -42,5 +42,8 @@ public class LinkedListDriver {
 		System.out.println("\nMid value for the list: " + list.findMid());
 		list.reverse();
 		System.out.println("\nAfter reversing the list: " + list);
+		System.out.print("\nTesting iterator: ");
+		for(double d : list)
+			System.out.print(d + "\t");
 	}
 }
