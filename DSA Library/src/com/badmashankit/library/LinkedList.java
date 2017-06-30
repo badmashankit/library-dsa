@@ -204,7 +204,7 @@ public class LinkedList<E> implements Iterable<E> {
 
 			@Override
 			public E next() {
-				return get(index);
+				return get(index++);
 			}
 		};
 	}
