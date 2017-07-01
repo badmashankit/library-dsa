@@ -195,16 +195,19 @@ public class LinkedList<E> implements Iterable<E> {
 	@Override
 	public Iterator<E> iterator() {
 		return new Iterator<E>() {
-			private int index = 0;
+			private Node ptr = head;
 
 			@Override
 			public boolean hasNext() {
-				return index < size();
+				return ptr != null;
 			}
 
 			@Override
 			public E next() {
-				return get(index++);
+				@SuppressWarnings("unchecked")
+				E val = (E) ptr.getData();
+				ptr = ptr.next;
+				return val;
 			}
 		};
 	}
