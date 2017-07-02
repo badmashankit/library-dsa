@@ -35,6 +35,20 @@ public class LinkedList<E> implements Iterable<E> {
 	public boolean isEmpty() {
 		return head == null;
 	}
+	
+	public void clear() {
+		if(!isEmpty()) {
+			Node ptr = head;
+			while(ptr != null) {
+				Node next = ptr.getNext();
+				ptr.setNext(null);
+				ptr.setData(null);
+				ptr = next;
+			}
+			size = 0;
+			head = null;
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	public E get(int index) {
@@ -211,6 +225,20 @@ public class LinkedList<E> implements Iterable<E> {
 			}
 		};
 	}
+	
+	@SuppressWarnings("unchecked")
+	public E[] getElements() {
+		if(isEmpty())
+			throw new EmptyLinkedListException();
+		E[] elements = (E[]) new Object[size];
+		Node ptr = head;
+		int index = 0;
+		while(ptr != null) {
+			elements[index++] = (E) ptr.getData();
+			ptr = ptr.getNext();
+		}
+		return elements;
+	}
 
 	@Override
 	public String toString() {
@@ -240,6 +268,10 @@ public class LinkedList<E> implements Iterable<E> {
 
 		public Node getNext() {
 			return next;
+		}
+		
+		public void setData(Object data) {
+			this.data = data;
 		}
 
 		public void setNext(Node next) {
