@@ -42,6 +42,14 @@ public class ArrayList<E> implements Iterable<E> {
 	public boolean isEmpty() {
 		return size == 0;
 	}
+	
+	public void clear() {
+		if(!isEmpty()) {
+			length = 0;
+			elements = new Object[length];
+			size = 0;
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	public E get(int index) throws IndexOutOfBoundsException {
@@ -92,6 +100,11 @@ public class ArrayList<E> implements Iterable<E> {
 				return get(index++);
 			}
 		};
+	}
+	
+	@SuppressWarnings("unchecked")
+	public E[] getElements() {
+		return (E[]) elements;
 	}
 
 	@Override
