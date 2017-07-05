@@ -67,6 +67,8 @@ public class DoublyLinkedList<E> implements Iterable<E> {
 
 	public void add(int index, E element) {
 		checkRange(index);
+		if (index == 0)
+			addFirst(element);
 		size++;
 		Node node = new Node(element);
 		Node ptr = getNode(index);
@@ -80,8 +82,13 @@ public class DoublyLinkedList<E> implements Iterable<E> {
 	public void addFirst(E element) {
 		if (isEmpty())
 			add(element);
-		else
-			add(0, element);
+		else {
+			Node node = new Node(element);
+			size++;
+			head.setPrev(node);
+			node.setNext(head);
+			head = node;
+		}
 	}
 
 	public void addLast(E element) {
@@ -92,7 +99,10 @@ public class DoublyLinkedList<E> implements Iterable<E> {
 		int index = indexOf(key);
 		if (index == -1)
 			throw new NoSuchElementException("Element : " + key);
-		add(index + 1, element);
+		if (index + 1 == size)
+			add(element);
+		else
+			add(index + 1, element);
 	}
 
 	public void deleteFirst() {
@@ -123,13 +133,18 @@ public class DoublyLinkedList<E> implements Iterable<E> {
 
 	public void delete(int index) {
 		checkRange(index);
-		Node ptr = getNode(index);
-		ptr.getPrev().setNext(ptr.getNext());
-		if (ptr.getNext() != null)
+		if (index == 0)
+			deleteFirst();
+		else if (index + 1 == size)
+			deleteLast();
+		else {
+			Node ptr = getNode(index);
+			ptr.getPrev().setNext(ptr.getNext());
 			ptr.getNext().setPrev(ptr.getPrev());
-		ptr.setNext(null);
-		ptr.setPrev(null);
-		size--;
+			ptr.setNext(null);
+			ptr.setPrev(null);
+			size--;
+		}
 	}
 
 	public void delete(E key) {
@@ -164,8 +179,10 @@ public class DoublyLinkedList<E> implements Iterable<E> {
 				current.setNext(next);
 				current = current.getPrev();
 			}
-			if (next != null)
+			if (next != null) {
 				head = next.getPrev();
+				head.setPrev(null);
+			}
 		}
 	}
 
