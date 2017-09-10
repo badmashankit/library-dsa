@@ -102,20 +102,6 @@ public class Stack<E> implements Iterable<E> {
 		};
 	}
 
-	@SuppressWarnings("unchecked")
-	public E[] getElements() {
-		if (isEmpty())
-			throw new EmptyStackException();
-		E[] elements = (E[]) new Object[size];
-		Node ptr = top;
-		int index = 0;
-		while (ptr != null) {
-			elements[index++] = (E) ptr.getData();
-			ptr = ptr.getNext();
-		}
-		return elements;
-	}
-
 	@Override
 	public String toString() {
 		if (isEmpty())

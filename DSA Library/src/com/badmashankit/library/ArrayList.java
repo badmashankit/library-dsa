@@ -102,11 +102,6 @@ public class ArrayList<E> implements Iterable<E> {
 		};
 	}
 
-	@SuppressWarnings("unchecked")
-	public E[] getElements() {
-		return (E[]) elements;
-	}
-
 	@Override
 	public String toString() {
 		if (isEmpty())

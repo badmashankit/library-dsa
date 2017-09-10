@@ -220,20 +220,6 @@ public class LinkedList<E> implements Iterable<E> {
 		};
 	}
 
-	@SuppressWarnings("unchecked")
-	public E[] getElements() {
-		if (isEmpty())
-			throw new EmptyLinkedListException();
-		E[] elements = (E[]) new Object[size];
-		Node ptr = head;
-		int index = 0;
-		while (ptr != null) {
-			elements[index++] = (E) ptr.getData();
-			ptr = ptr.getNext();
-		}
-		return elements;
-	}
-
 	@Override
 	public String toString() {
 		if (isEmpty())
