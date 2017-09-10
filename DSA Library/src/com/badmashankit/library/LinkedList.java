@@ -19,6 +19,9 @@ package com.badmashankit.library;
 
 import java.util.Iterator;
 
+import com.badmashankit.library.exceptions.EmptyLinkedListException;
+import com.badmashankit.library.exceptions.NoSuchElementException;
+
 public class LinkedList<E> implements Iterable<E> {
 	private Node head;
 	private int size;
@@ -35,11 +38,11 @@ public class LinkedList<E> implements Iterable<E> {
 	public boolean isEmpty() {
 		return head == null;
 	}
-	
+
 	public void clear() {
-		if(!isEmpty()) {
+		if (!isEmpty()) {
 			Node ptr = head;
-			while(ptr != null) {
+			while (ptr != null) {
 				Node next = ptr.getNext();
 				ptr.setNext(null);
 				ptr.setData(null);
@@ -54,15 +57,6 @@ public class LinkedList<E> implements Iterable<E> {
 	public E get(int index) {
 		checkRange(index);
 		return (E) getNode(index).getData();
-	}
-
-	private Node getNode(int index) {
-		Node ptr = head;
-		while (index > 0 && ptr.getNext() != null) {
-			index--;
-			ptr = ptr.getNext();
-		}
-		return ptr;
 	}
 
 	public void add(E element) {
@@ -225,15 +219,15 @@ public class LinkedList<E> implements Iterable<E> {
 			}
 		};
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public E[] getElements() {
-		if(isEmpty())
+		if (isEmpty())
 			throw new EmptyLinkedListException();
 		E[] elements = (E[]) new Object[size];
 		Node ptr = head;
 		int index = 0;
-		while(ptr != null) {
+		while (ptr != null) {
 			elements[index++] = (E) ptr.getData();
 			ptr = ptr.getNext();
 		}
@@ -254,6 +248,15 @@ public class LinkedList<E> implements Iterable<E> {
 		return str;
 	}
 
+	private Node getNode(int index) {
+		Node ptr = head;
+		while (index > 0 && ptr.getNext() != null) {
+			index--;
+			ptr = ptr.getNext();
+		}
+		return ptr;
+	}
+
 	private class Node {
 		private Object data;
 		private Node next;
@@ -269,20 +272,13 @@ public class LinkedList<E> implements Iterable<E> {
 		public Node getNext() {
 			return next;
 		}
-		
+
 		public void setData(Object data) {
 			this.data = data;
 		}
 
 		public void setNext(Node next) {
 			this.next = next;
-		}
-	}
-
-	@SuppressWarnings("serial")
-	private static class EmptyLinkedListException extends RuntimeException {
-		public EmptyLinkedListException() {
-			super();
 		}
 	}
 }

@@ -19,6 +19,9 @@ package com.badmashankit.library;
 
 import java.util.Iterator;
 
+import com.badmashankit.library.exceptions.EmptyLinkedListException;
+import com.badmashankit.library.exceptions.NoSuchElementException;
+
 public class DoublyLinkedList<E> implements Iterable<E> {
 	private Node head;
 	private int size;
@@ -40,15 +43,6 @@ public class DoublyLinkedList<E> implements Iterable<E> {
 	public E get(int index) {
 		checkRange(index);
 		return (E) getNode(index).getData();
-	}
-
-	private Node getNode(int index) {
-		Node ptr = head;
-		while (index > 0 && ptr.getNext() != null) {
-			index--;
-			ptr = ptr.getNext();
-		}
-		return ptr;
 	}
 
 	public void add(E element) {
@@ -246,6 +240,15 @@ public class DoublyLinkedList<E> implements Iterable<E> {
 		return str;
 	}
 
+	private Node getNode(int index) {
+		Node ptr = head;
+		while (index > 0 && ptr.getNext() != null) {
+			index--;
+			ptr = ptr.getNext();
+		}
+		return ptr;
+	}
+
 	private class Node {
 		private Object data;
 		private Node next;
@@ -266,20 +269,13 @@ public class DoublyLinkedList<E> implements Iterable<E> {
 		public void setNext(Node next) {
 			this.next = next;
 		}
-		
+
 		public Node getPrev() {
 			return prev;
 		}
 
 		public void setPrev(Node prev) {
 			this.prev = prev;
-		}
-	}
-
-	@SuppressWarnings("serial")
-	private static class EmptyLinkedListException extends RuntimeException {
-		public EmptyLinkedListException() {
-			super();
 		}
 	}
 }

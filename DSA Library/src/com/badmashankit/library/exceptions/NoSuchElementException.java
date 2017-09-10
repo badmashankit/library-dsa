@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.badmashankit.library;
+package com.badmashankit.library.exceptions;
 
 @SuppressWarnings("serial")
 public class NoSuchElementException extends RuntimeException {

@@ -42,17 +42,17 @@ public class ArrayList<E> implements Iterable<E> {
 	public boolean isEmpty() {
 		return size == 0;
 	}
-	
+
 	public void clear() {
-		if(!isEmpty()) {
-			length = 0;
+		if (!isEmpty()) {
+			length = 10;
 			elements = new Object[length];
 			size = 0;
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	public E get(int index) throws IndexOutOfBoundsException {
+	public E get(int index) {
 		checkRange(index);
 		return (E) elements[index];
 	}
@@ -66,7 +66,7 @@ public class ArrayList<E> implements Iterable<E> {
 		elements[size++] = element;
 	}
 
-	public void add(int index, E element) throws IndexOutOfBoundsException {
+	public void add(int index, E element) {
 		checkRange(index);
 		doubleArrayIfOverflow(size + 1);
 		for (int i = size; i > index; i--)
@@ -75,7 +75,7 @@ public class ArrayList<E> implements Iterable<E> {
 		size++;
 	}
 
-	public void remove(int index) throws IndexOutOfBoundsException {
+	public void remove(int index) {
 		checkRange(index);
 		if (index < size - 1) {
 			// Shift elements to left by 1
@@ -84,7 +84,7 @@ public class ArrayList<E> implements Iterable<E> {
 		}
 		elements[size--] = null; // Decrease size by 1
 	}
-	
+
 	@Override
 	public Iterator<E> iterator() {
 		return new Iterator<E>() {
@@ -101,7 +101,7 @@ public class ArrayList<E> implements Iterable<E> {
 			}
 		};
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public E[] getElements() {
 		return (E[]) elements;
@@ -109,6 +109,8 @@ public class ArrayList<E> implements Iterable<E> {
 
 	@Override
 	public String toString() {
+		if (isEmpty())
+			return "[]";
 		String str = "[";
 		for (int i = 0; i < size - 1; i++)
 			str += elements[i] + ", ";
