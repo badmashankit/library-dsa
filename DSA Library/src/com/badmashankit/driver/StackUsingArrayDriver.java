@@ -30,7 +30,7 @@ public class StackUsingArrayDriver {
 		System.out.println("\nPopping out an element: " + stack.pop());
 		System.out.println("\nSize of the stack: " + stack.size());
 		System.out.println("\nUsing iterator: ");
-		for(int element : stack)
+		for (int element : stack)
 			System.out.print(element + "\t");
 	}
 }

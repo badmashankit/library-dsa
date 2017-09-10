@@ -43,7 +43,7 @@ public class LinkedListDriver {
 		list.reverse();
 		System.out.println("\nAfter reversing the list: " + list);
 		System.out.print("\nTesting iterator: ");
-		for(double d : list)
+		for (double d : list)
 			System.out.print(d + "\t");
 	}
 }

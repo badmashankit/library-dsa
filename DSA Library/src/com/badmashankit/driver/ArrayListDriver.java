@@ -34,7 +34,7 @@ public class ArrayListDriver {
 		System.out.println("\nisEmpty : " + list.isEmpty());
 		System.out.println("\nSize of the List : " + list.size());
 		System.out.print("\nTesting iterator: ");
-		for(double d : list)
+		for (double d : list)
 			System.out.print(d + "\t");
 	}
 }
