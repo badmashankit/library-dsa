@@ -38,6 +38,21 @@ public class DoublyLinkedList<E> implements Iterable<E> {
 	public boolean isEmpty() {
 		return head == null;
 	}
+	
+	public void clear() {
+		if (!isEmpty()) {
+			Node ptr = head;
+			while (ptr != null) {
+				Node next = ptr.getNext();
+				ptr.setNext(null);
+				ptr.setData(null);
+				ptr.setPrev(null);
+				ptr = next;
+			}
+			size = 0;
+			head = null;
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	public E get(int index) {
@@ -260,6 +275,10 @@ public class DoublyLinkedList<E> implements Iterable<E> {
 
 		public Object getData() {
 			return data;
+		}
+		
+		public void setData(Object data) {
+			this.data = data;
 		}
 
 		public Node getNext() {
