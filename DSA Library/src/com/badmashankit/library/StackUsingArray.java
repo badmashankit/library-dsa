@@ -75,17 +75,17 @@ public class StackUsingArray<E> implements Iterable<E> {
 	@Override
 	public Iterator<E> iterator() {
 		return new Iterator<E>() {
-			private int index = 0;
+			private int index = top;
 
 			@Override
 			public boolean hasNext() {
-				return index < size();
+				return index > -1;
 			}
 
 			@SuppressWarnings("unchecked")
 			@Override
 			public E next() {
-				return (E) elements[index++];
+				return (E) elements[index--];
 			}
 		};
 	}
@@ -100,9 +100,9 @@ public class StackUsingArray<E> implements Iterable<E> {
 		if (isEmpty())
 			return "[]";
 		String str = "[";
-		for (int i = 0; i < top; i++)
+		for (int i = top; i > 0; i--)
 			str += elements[i] + ", ";
-		str += elements[top] + "]";
+		str += elements[0] + "]";
 		return str;
 	}
 }
