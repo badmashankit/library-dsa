@@ -45,5 +45,7 @@ public class LinkedListDriver {
 		System.out.print("\nTesting iterator: ");
 		for (double d : list)
 			System.out.print(d + "\t");
+		list.clear();
+		System.out.println("\n\nList after clear(): " + list);
 	}
 }

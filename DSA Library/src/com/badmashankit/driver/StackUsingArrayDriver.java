@@ -32,5 +32,7 @@ public class StackUsingArrayDriver {
 		System.out.println("\nUsing iterator: ");
 		for (int element : stack)
 			System.out.print(element + "\t");
+		stack.clear();
+		System.out.println("\n\nStack after clear(): " + stack);
 	}
 }
