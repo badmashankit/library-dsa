@@ -21,7 +21,7 @@ import java.util.Iterator;
 
 import com.badmashankit.library.exceptions.EmptyStackException;
 
-public class Stack<E> implements Iterable<E> {
+public class Stack<E> extends Collection<E> {
 	private Node top;
 	private int size;
 

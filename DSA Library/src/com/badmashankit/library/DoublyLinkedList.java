@@ -22,7 +22,7 @@ import java.util.Iterator;
 import com.badmashankit.library.exceptions.EmptyLinkedListException;
 import com.badmashankit.library.exceptions.NoSuchElementException;
 
-public class DoublyLinkedList<E> implements Iterable<E> {
+public class DoublyLinkedList<E> extends Collection<E> {
 	private Node head;
 	private int size;
 

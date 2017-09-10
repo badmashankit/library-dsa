@@ -19,7 +19,7 @@ package com.badmashankit.library;
 
 import java.util.Iterator;
 
-public class ArrayList<E> implements Iterable<E> {
+public class ArrayList<E> extends Collection<E> {
 
 	private Object[] elements;
 

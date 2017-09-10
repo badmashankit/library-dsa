@@ -22,7 +22,7 @@ import java.util.Iterator;
 import com.badmashankit.library.exceptions.EmptyStackException;
 import com.badmashankit.library.exceptions.StackOverflowException;
 
-public class StackUsingArray<E> implements Iterable<E> {
+public class StackUsingArray<E> extends Collection<E> {
 	private Object[] elements;
 	private int top;
 	private int length;
