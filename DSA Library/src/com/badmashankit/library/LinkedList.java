@@ -210,9 +210,9 @@ public class LinkedList<E> implements Iterable<E> {
 				return ptr != null;
 			}
 
+			@SuppressWarnings("unchecked")
 			@Override
 			public E next() {
-				@SuppressWarnings("unchecked")
 				E val = (E) ptr.getData();
 				ptr = ptr.next;
 				return val;
