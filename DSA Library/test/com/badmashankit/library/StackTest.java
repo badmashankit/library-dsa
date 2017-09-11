@@ -17,7 +17,10 @@
 
 package com.badmashankit.library;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -28,10 +31,10 @@ public class StackTest {
 	private Stack<Long> stack;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		stack = new Stack<>();
 	}
-	
+
 	@Test
 	public void testPop() {
 		stack.push(25L);
@@ -67,7 +70,7 @@ public class StackTest {
 		stack.push(15L);
 		assertEquals(3, stack.size());
 	}
-	
+
 	@Test
 	public void testClear() {
 		stack.push(25L);
@@ -77,7 +80,7 @@ public class StackTest {
 		stack.clear();
 		assertEquals(0, stack.size());
 	}
-	
+
 	@Test
 	public void testPeek() {
 		stack.push(25L);
@@ -85,7 +88,7 @@ public class StackTest {
 		stack.push(15L);
 		assertEquals(Long.valueOf(15L), stack.peek());
 	}
-	
+
 	@Test
 	public void testToString() {
 		assertEquals("[]", stack.toString());
@@ -94,19 +97,19 @@ public class StackTest {
 		stack.push(15L);
 		assertEquals("[15, 28, 25]", stack.toString());
 	}
-	
+
 	@Test
 	public void testIsEmpty() {
 		assertTrue(stack.isEmpty());
 		stack.push(25L);
 		assertFalse(stack.isEmpty());
 	}
-	
+
 	@Test(expected = EmptyStackException.class)
 	public void testPeekException() {
 		stack.peek();
 	}
-	
+
 	@Test
 	public void testIterator() {
 		stack.push(25L);
@@ -114,12 +117,11 @@ public class StackTest {
 		stack.push(96L);
 		stack.push(12L);
 		long sum = 0L;
-		for(long element : stack) {
+		for (long element : stack)
 			sum += element;
-		}
 		assertEquals(148L, sum);
 	}
-	
+
 	@Test
 	public void testEquals() {
 		stack.push(25L);

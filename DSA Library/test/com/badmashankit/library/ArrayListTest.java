@@ -17,7 +17,9 @@
 
 package com.badmashankit.library;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -78,11 +80,11 @@ public class ArrayListTest {
 		list.add("DEF");
 		list.add("GHI");
 		String str = "";
-		for(String value : list)
+		for (String value : list)
 			str += value;
 		assertEquals("ABCDEFGHI", str);
 	}
-	
+
 	@Test
 	public void testGet() {
 		list.add("ABC");
@@ -90,12 +92,12 @@ public class ArrayListTest {
 		list.add("GHI");
 		assertEquals("DEF", list.get(1));
 	}
-	
+
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testGetException() {
 		list.get(0);
 	}
-	
+
 	@Test
 	public void testAddIndex() {
 		list.add("ABC");
@@ -107,17 +109,17 @@ public class ArrayListTest {
 		assertEquals(5, list.size());
 		assertEquals("[ABC, DEF, OTP, XYZ, GHI]", list.toString());
 	}
-	
+
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testAddIndexException() {
 		list.add(6, "ABC");
 	}
-	
+
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testRemoveException() {
 		list.remove(5);
 	}
-	
+
 	@Test
 	public void testRemove() {
 		list.add("ABC");
