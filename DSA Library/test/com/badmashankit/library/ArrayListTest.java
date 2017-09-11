@@ -131,7 +131,7 @@ public class ArrayListTest {
 		assertEquals(2, list.size());
 		assertEquals("[ABC, GHI]", list.toString());
 	}
-	
+
 	@Test
 	public void testEquals() {
 		list.add("ABC");
