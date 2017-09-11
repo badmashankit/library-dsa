@@ -19,6 +19,7 @@ package com.badmashankit.library;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -129,5 +130,42 @@ public class ArrayListTest {
 		list.remove(1);
 		assertEquals(2, list.size());
 		assertEquals("[ABC, GHI]", list.toString());
+	}
+	
+	@Test
+	public void testEquals() {
+		list.add("ABC");
+		list.add("DEF");
+		list.add(null);
+		list.add("GHI");
+		assertEquals(list, list);
+		ArrayList<String> list2 = new ArrayList<>();
+		list2.add("ABC");
+		list2.add("DEF");
+		list2.add(null);
+		list2.add("GHI");
+		assertEquals(list, list2);
+		assertEquals(list.hashCode(), list2.hashCode());
+		assertNotEquals(list, new Object());
+		assertNotEquals(list, null);
+		list2 = new ArrayList<>();
+		list2.add("ABC");
+		list2.add(null);
+		list2.add(null);
+		list2.add("GHI");
+		assertNotEquals(list, list2);
+		list2 = new ArrayList<>();
+		list2.add("ABC");
+		list2.add("DEF");
+		list2.add(null);
+		list2.add("GHI");
+		list2.add("ZYX");
+		assertNotEquals(list, list2);
+		list2 = new ArrayList<>();
+		list2.add("ABC");
+		list2.add("DEF");
+		list2.add("GHI");
+		list2.add("JKL");
+		assertNotEquals(list, list2);
 	}
 }
